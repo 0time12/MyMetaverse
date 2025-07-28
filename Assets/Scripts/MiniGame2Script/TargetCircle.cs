@@ -5,14 +5,7 @@ using UnityEngine;
 public class TargetCircle : MonoBehaviour
 {
     [SerializeField]
-
     private float rotationSpeed = -30f; //시계방향 음수
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

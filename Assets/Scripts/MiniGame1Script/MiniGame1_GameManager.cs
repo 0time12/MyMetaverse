@@ -16,7 +16,6 @@ public class MiniGame1_GameManager : MonoBehaviour
 
     private int currentScore = 0;
     private int bestscore = 0;
-    private int best = 0;
 
     UIManager uiManager;
 

@@ -6,14 +6,9 @@ public class Pin : MonoBehaviour
 {
     [SerializeField]
     private float movespeed = 10f; // 이동 속도
+
     private bool isPinned = false;
     private bool isLaunched = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -31,6 +26,7 @@ public class Pin : MonoBehaviour
         {
             GameObject childObject = transform.GetChild(0).gameObject;
             childObject.SetActive(true);
+
             SpriteRenderer childSprite = childObject.GetComponent<SpriteRenderer>();
             childSprite.enabled = true;
 

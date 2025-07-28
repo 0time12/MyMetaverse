@@ -5,13 +5,16 @@ using UnityEngine.Tilemaps;
 
 public class FollowCamera : MonoBehaviour
 {
-    [Header("Target Settings")]
-    public Transform target;
-    public Vector3 offset = new Vector3(0, 0, -10);
-    public float smoothSpeed = 5f;
+    [SerializeField]
+    private Transform target;
 
-    [Header("Camera Bounds (Auto from Tilemap)")]
-    public TilemapCollider2D tilemapCollider;
+    [SerializeField]
+    private float smoothSpeed = 5f;
+
+    [SerializeField]
+    private TilemapCollider2D tilemapCollider;
+
+    public Vector3 offset = new Vector3(0, 0, -10);
     private Vector2 minPosition;
     private Vector2 maxPosition;
 

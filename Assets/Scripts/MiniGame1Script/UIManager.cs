@@ -7,14 +7,27 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI bestscoreText;
-    public TextMeshProUGUI bestscoreTextb;
-    public Button restartbutton;
-    public Button mainbutton;
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
 
-    public TextMeshProUGUI countdownText;
-    public GameObject playerController;
+    [SerializeField]
+    private TextMeshProUGUI bestscoreText;
+
+    [SerializeField]
+    private TextMeshProUGUI bestscoreTextb;
+
+    [SerializeField]
+    private Button restartbutton;
+
+    [SerializeField]
+    private Button mainbutton;
+
+    [SerializeField]
+    private TextMeshProUGUI countdownText;
+
+    [SerializeField]
+    private GameObject playerController;
+
     public float delayBetweenCounts = 1f;
 
     public void Start()

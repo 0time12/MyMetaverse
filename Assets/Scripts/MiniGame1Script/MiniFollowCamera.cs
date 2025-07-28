@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MiniFollowCamera : MonoBehaviour
 {
-    public Transform target;
+    [SerializeField]
+    private Transform target;
+
     float offsetX;
 
     void Start()

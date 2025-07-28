@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
-    public Text dialogueText;
-    public GameObject talkUI;
+    [SerializeField]
+    private Text dialogueText;
+
+    [SerializeField]
+    private GameObject talkUI;
 
     private string[] lines;
     private int currentIndex = 0;

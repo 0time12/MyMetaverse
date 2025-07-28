@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
+    
+    [SerializeField]
+    private Rigidbody2D rb;
+
+    [SerializeField]
+    private Animator animator;
+
     public float moveSpeed = 5f;
-    public Rigidbody2D rb;
-    public Animator animator;
     private Vector2 moveDirection;
     private Vector2 lastMoveDirection = Vector2.right; // 기본값 오른쪽
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();    
     }
     void Update()
     {

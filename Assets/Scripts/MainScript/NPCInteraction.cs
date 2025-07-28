@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
-    public GameObject interactionUI;
-    public GameObject talkUI;
+    [SerializeField]
+    private GameObject interactionUI;
+
+    [SerializeField]
+    private GameObject talkUI;
 
     private bool isPlayerInRange = false;
     private bool isTalking = false;

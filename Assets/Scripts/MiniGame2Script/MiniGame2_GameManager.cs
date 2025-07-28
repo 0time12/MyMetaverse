@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MiniGame2_GameManager : MonoBehaviour
 {
-    public static MiniGame2_GameManager instance = null;
-    public bool isGameOver = false;
-
     [SerializeField]
     private TextMeshProUGUI textgoal;
 
@@ -26,6 +23,10 @@ public class MiniGame2_GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject mainbtn;
+
+    public bool isGameOver = false;
+
+    public static MiniGame2_GameManager instance = null;
 
     private void Awake()
     {
