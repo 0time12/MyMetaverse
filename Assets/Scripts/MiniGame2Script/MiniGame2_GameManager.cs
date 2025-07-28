@@ -24,6 +24,21 @@ public class MiniGame2_GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mainbtn;
 
+    [SerializeField]
+    private TextMeshProUGUI TimeText;
+
+    float time = 0f;
+
+    [SerializeField]
+    private TextMeshProUGUI countdownText;
+
+    public bool isCountingDown = false;
+
+    [SerializeField]
+    private GameObject player;
+
+    public float delayBetweenCounts = 1f;
+
     public bool isGameOver = false;
 
     public static MiniGame2_GameManager instance = null;
@@ -37,8 +52,22 @@ public class MiniGame2_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (player != null)
+            player.SetActive(false);
+
+        StartCoroutine(CountdownRoutine());
         textgoal.SetText(goal.ToString());
     }
+
+    private void Update()
+    {
+        if (isCountingDown)
+        {
+            time += Time.deltaTime;
+            TimeText.text = time.ToString("N2");
+        }
+    }
+
 
     public void Decreasegoal()
     {
@@ -52,10 +81,12 @@ public class MiniGame2_GameManager : MonoBehaviour
     public void SetGameOver(bool success)
     {
         int successcheck;
+        
 
         if (isGameOver == false)
         {
             isGameOver = true;
+            isCountingDown = false;
 
             Camera.main.backgroundColor = success ? green : red;
             Invoke("ShowRetryButton", 0.5f);
@@ -81,5 +112,29 @@ public class MiniGame2_GameManager : MonoBehaviour
     public void main()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    
+    IEnumerator CountdownRoutine()
+    {
+
+        countdownText.gameObject.SetActive(true);
+
+        int count = 3;
+        while (count > 0)
+        {
+            countdownText.text = count.ToString();
+            yield return new WaitForSeconds(delayBetweenCounts);
+            count--;
+        }
+
+        countdownText.text = "Start!";
+        yield return new WaitForSeconds(1f);
+        countdownText.gameObject.SetActive(false);
+
+        if (player != null)
+            player.SetActive(true);
+
+        isCountingDown = true;
     }
 }

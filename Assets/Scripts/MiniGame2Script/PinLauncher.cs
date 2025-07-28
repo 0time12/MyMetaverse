@@ -6,7 +6,10 @@ public class PinLauncher : MonoBehaviour
 {
     [SerializeField]
     private GameObject pinObject;
+
     private Pin currPin;
+
+    private MiniGame2_GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -18,6 +21,11 @@ public class PinLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager != null && gameManager.isCountingDown)
+        {
+            return; // 카운트다운 중이면 여기서 함수 종료
+        }
+
         if (Input.GetMouseButtonDown(0)
             && currPin != null
             && MiniGame2_GameManager.instance.isGameOver == false)
