@@ -10,7 +10,7 @@ public class TargetCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MiniGame2_GameManager.instance.isGameOver == false)
+        if (MiniGame2_GameManager.instance != null && MiniGame2_GameManager.instance.isGameOver == false)
         {
             transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         }

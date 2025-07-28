@@ -15,7 +15,7 @@ public class MiniGame1_GameManager : MonoBehaviour
     }
 
     private int currentScore = 0;
-    private int bestscore = 0;
+    
 
     UIManager uiManager;
 
@@ -32,13 +32,13 @@ public class MiniGame1_GameManager : MonoBehaviour
     private void Start()
     {
         uiManager.UpdateScore(0);
-        uiManager.UpdateBestScore(PlayerPrefs.GetInt("BestScore", 0));
+        uiManager.UpdateBestScore(PlayerPrefs.GetInt("Mini1BestScore", 0));
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
-        SetBestScore();
+        Mini1BestScore();
         uiManager.SetRestart();
     }
 
@@ -68,13 +68,14 @@ public class MiniGame1_GameManager : MonoBehaviour
 
     }
 
-    public void SetBestScore()
+    public void Mini1BestScore()
     {
-        int savedBest = PlayerPrefs.GetInt("BestScore", 0);
+        int savedBest = PlayerPrefs.GetInt("Mini1BestScore", 0);
+        int bestscore = 0;
 
         if (currentScore > savedBest)
         {
-            PlayerPrefs.SetInt("BestScore", currentScore);
+            PlayerPrefs.SetInt("Mini1BestScore", currentScore);
             PlayerPrefs.Save();
             bestscore = currentScore;
         }

@@ -14,7 +14,6 @@ public class DialogueController : MonoBehaviour
 
     private string[] lines;
     private int currentIndex = 0;
-    private bool isTalking = false;
 
     void Start()
     {
@@ -35,7 +34,6 @@ public class DialogueController : MonoBehaviour
 
         currentIndex = 0;
         dialogueText.text = lines[currentIndex];
-        isTalking = true;
 
         if (talkUI != null) talkUI.SetActive(true);
     }

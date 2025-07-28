@@ -30,6 +30,12 @@ public class MiniGame2_GameManager : MonoBehaviour
     float time = 0f;
 
     [SerializeField]
+    private TextMeshProUGUI bestscoreText;
+
+    [SerializeField]
+    private TextMeshProUGUI bestscoreb;
+
+    [SerializeField]
     private TextMeshProUGUI countdownText;
 
     public bool isCountingDown = false;
@@ -46,8 +52,8 @@ public class MiniGame2_GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
-            instance = this;
 
+            instance = this;
     }
     // Start is called before the first frame update
     void Start()
@@ -95,6 +101,10 @@ public class MiniGame2_GameManager : MonoBehaviour
 
             PlayerPrefs.SetInt("SuccessCheck", successcheck);
 
+            if (success)
+            {
+                Mini2BestScore();
+            }
         }
     }
 
@@ -102,6 +112,8 @@ public class MiniGame2_GameManager : MonoBehaviour
     {
         mainbtn.SetActive(true);
         retrybtn.SetActive(true);
+        bestscoreb.gameObject.SetActive(true);
+        bestscoreText.gameObject.SetActive(true);
     }
 
     public void Retry()
@@ -114,7 +126,26 @@ public class MiniGame2_GameManager : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    
+    public void Mini2BestScore()
+    {
+        float savedBest = PlayerPrefs.GetFloat("Mini2BestScore", 999f);
+
+        float beststime;
+
+        if (time < savedBest)
+        {
+            PlayerPrefs.SetFloat("Mini2BestScore", time);
+            PlayerPrefs.Save();
+            beststime = time;
+        }
+        else
+        {
+            beststime = savedBest;
+        }
+        bestscoreText.text = PlayerPrefs.GetFloat("Mini2BestScore", 0).ToString("N2");
+        Debug.Log("Best Score: " + PlayerPrefs.GetFloat("Mini2BestScore", 0));
+    }
+
     IEnumerator CountdownRoutine()
     {
 
